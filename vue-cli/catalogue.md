@@ -10,7 +10,7 @@
 
 ├── config // 项目配置
 │ ├── dev.env.js // 开发环境变量
-│ ├── index.js // 项目配置文件
+│ ├── index.js // 项目配置文件(dev代理，build..)
 │ └── prod.env.js // 生产环境变量
 
 ├── src // 源码目录
@@ -34,4 +34,24 @@
 ├── package.json // npm包配置文件，里面定义了项目的npm脚本，依赖包等信息
 
 ├── package-lock.json // npm版本大于v5.0.0(?)的时候，在有package.json的情况下npm install会自动生成，用于锁定依赖模块版本号
+```
+[index.html]
+```
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1773670_q9o4r45dlia.css">
+    <title>xxxxxx</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+</body>
+
+</html>
 ```
