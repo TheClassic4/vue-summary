@@ -1,6 +1,6 @@
 ### vue项目目录结构详解
 基于 vue.js 的前端开发环境，用于前后端分离后的单页应用开发
-
+```
 ├── build // 构建脚本目录
 │ ├── build.js // 生产环境构建脚本
 │ ├── utils.js // 构建相关工具方法
@@ -34,4 +34,4 @@
 ├── package.json // npm包配置文件，里面定义了项目的npm脚本，依赖包等信息
 
 ├── package-lock.json // npm版本大于v5.0.0(?)的时候，在有package.json的情况下npm install会自动生成，用于锁定依赖模块版本号
-
+```
