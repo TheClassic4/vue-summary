@@ -140,4 +140,58 @@ Promise.prototype.then = function (onFulfilled, onRejected) {
     //其它代码略...
 }
 ```
-Promise处理异步代码的地方
+Promise最强大的处理异步代码的地方就是链式调用
+1.每一个then方法都返回一个新的Promise对象
+2.如果then方法中显式地返回了一个Promise对象，就以此对象为准，返回它地结果
+3.如果then方法中返回地是一个普通值(Number，string)就用此值包装成一个新地Promise对象返回
+4.如果then没有return，就视为返回一个用Undefined包装的Promise对象
+5.如果then方法出现异常，则调用失败方法（reject）跳转到下一个then的onRejected
+6.如果then方法中没有传入回调，则继续向下传递
+
+3:当then返回了一个普通的值时，下一个then的成功态回调中即可取到上一个then的返回结果，说明了上一个then正是使用2来包装成的Promise，这符合规范中说的。
+```
+let p =new Promise((resolve,reject)=>{
+    resolve(1);
+});
+
+p.then(data=>{
+    return 2; //返回一个普通值
+}).then(data=>{
+    console.log(data); //输出2
+});
+```
+4:如果then方法中没有return语句，就视为返回一个用Undefined包装的Promise对象
+```
+let p = new Promise((resolve, reject) => {
+    resolve(1);
+});
+
+p.then(data => {
+    //没有return语句
+}).then(data => {
+    console.log(data); //undefined
+});
+```
+6:如果then方法没有传入任何回调，则继续向下传递，这是什么意思呢？这就是Promise中值的穿透
+```
+let p = new Promise((resolve, reject) => {
+    resolve(1);
+});
+
+p.then(data => 2)
+.then()
+.then()
+.then(data => {
+    console.log(data); //2
+});
+```
+
+链式调用的原理，不论是何种情况then方法都会返回一个Promise对象，这样才会有下个then方法。
+```
+Promise.prototype.then = function (onFulfilled, onRejected) {
+    var promise2 = new Promise((resolve, reject) => {
+    //代码略...
+    }
+    return promise2;
+};
+```
