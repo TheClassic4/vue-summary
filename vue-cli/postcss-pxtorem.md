@@ -62,3 +62,12 @@ css: {
   }
 }
 ```
+index.html中
+```
+<script>
+  document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+  window.addEventListener('resize', () => {
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 10  + 'px';
+  });
+</script>
+```
