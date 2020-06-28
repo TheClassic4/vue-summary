@@ -21,3 +21,4 @@
 // Vue.set Vue.set(example1.items, indexOfItem,newValue) 
 // Array.prototype.splice example1.items.splice(indexOfItem,1, newValue) 
 为了解决第二类问题，你可以使用 splice： example1.items.splice(newLength)
+
