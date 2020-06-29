@@ -3,7 +3,7 @@
 Css相关配置
 
 ```
-moudle.experts = {
+moudle.exports = {
   css: {
     // 将组件内的css提取到一个单独的css文件（用于生产中），也可以传递给`extract-text-webpack-plugin`
     extract: true,
